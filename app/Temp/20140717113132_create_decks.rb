@@ -1,6 +1,6 @@
-class CreateFlashcards < ActiveRecord::Migration
+class CreateDecks < ActiveRecord::Migration
   def change
-    create_table :flashcards do |f|
+    create_table :decks do |f|
       f.string :question
       f.string :answer
 

@@ -1,0 +1,6 @@
+<%= @flashcard.question %>
+<form action='/flashcards/<%=@flashcard.id%>' method='post'>
+  <input name="answer" placeholder='Type answer'>
+  <input type='submit'>
+  <!-- <input type='params[:id]'> -->
+</form>
