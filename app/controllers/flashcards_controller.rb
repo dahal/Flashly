@@ -52,16 +52,15 @@ end
 
 #update
 #edit
-get '/' do
-
-end
-
-get '/' do
-
+put '/flashcards/:id' do |id|
+  "you got to the edit route for card id number #{id}"
+  #code to delete the card with the passed in id (from url)
 end
 
 #delete
 #destroy
-get '/' do
 
+delete '/flashcards/:id' do |id|
+  "you got to the delete route for card id number #{id}"
+  #code to delete the card with the passed in id (from url)
 end

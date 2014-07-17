@@ -1,6 +1,23 @@
-<%= @flashcard.question %>
-<form action='/flashcards/<%=@flashcard.id%>' method='post'>
-  <input name="answer" placeholder='Type answer'>
-  <input type='submit'>
-  <!-- <input type='params[:id]'> -->
-</form>
+<div>
+  <%= @flashcard.question %>
+</div>
+
+<div>
+  <form action='/flashcards/<%=@flashcard.id%>' method='post'>
+    <input name="answer" placeholder='Type answer'>
+    <input type='submit'>
+    <!-- <input type='params[:id]'> -->
+  </form>
+</div>
+<p>---------------</p>
+<div>
+  <form action='/flashcards/<%=@flashcard.id%>' method='post'>
+    <input type='hidden' name='_method' value='delete'>
+    <button type='submit'>Delete</button>
+  </form>
+  <form action='/flashcards/<%=@flashcard.id%>' method='post'>
+    <input type='hidden' name='_method' value='put'>
+    <button type='submit'>Edit</button>
+  </form>
+</div>
+

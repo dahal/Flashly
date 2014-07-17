@@ -3,4 +3,11 @@ class Flashcard < ActiveRecord::Base
     card = Flashcard.find_by_id(id)
     card.answer == user_answer
   end
+
+  def update
+  end
+
+  def delete
+  end
+
 end
