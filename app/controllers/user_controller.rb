@@ -4,7 +4,8 @@ get '/signup' do
 end
 
 post '/users/signup' do
-	User.create(params)
+	@user = User.create(params)
+	session[:id] = @user.id
 	redirect '/login'
 end
 
@@ -15,11 +16,30 @@ end
 
 post '/users/login' do
 	@user = User.find_by_email(params[:email])
-	if @user.password == params[:password]
-		session[:id]
-		"Logged in"
+	if @user && @user.password == params[:password]
+		session[:id] = @user.id
+		p session[:id]
+		redirect '/profile'
 	else
-		#redirect '/signup'
-		'Something went wrong...'
+		redirect '/signup'
+	end
+end
+
+get '/profile' do
+	@user = User.find_by_id(session[:id])
+	@gravatar = @user.email.to_s.gravatar
+	erb:'/users/profile'
+end
+
+get '/logout' do
+	session[:id] = nil
+	redirect '/'
+end
+
+get '/admin' do
+	if admin?
+		'You are admin'
+	else
+		'Not an admin'
 	end
 end

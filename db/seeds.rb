@@ -1,5 +1,6 @@
 #Users
-User.create(name:'admin', email:'admin@email.com', password:'admin', role:'admin')
+User.create(name:'Gannon Curran', email:'gannoncurran@mac.com', password:'password', role:'admin')
+User.create(name:'Puru Dahal', email:'puru@dahal.me', password:'password', role:'admin')
 User.create(name:'student', email:'student@email.com', password:'student', role:'student')
 
 #Decks
