@@ -10,28 +10,30 @@ get '/' do
 end
 
 # route to a particular card (by id)
-get '/flashcards/:id' do
-  @flashcard = Flashcard.find_by_id(params[:id])
+get '/flashcards/:id' do |id|
+  @flashcard = Flashcard.find_by_id(id)
   erb:'/flashcards/index'
 end
 
 # accept user answer and card id
-post '/flashcards/:id' do
-  if Flashcard.evaluate(params[:id], params[:answer])
-    redirect '/right'
+post '/flashcards/:id' do |id|
+  if Flashcard.evaluate(id, params[:answer])
+    redirect "/flashcards/#{id}/correct"
   else
-    redirect '/wrong'
+    redirect "/flashcards/#{id}/wrong"
   end
 end
 
-# route to respond with RIGHT
-get '/right' do
-  'right'
+# route to respond with correct
+get '/flashcards/:id/correct' do |id|
+  @flashcard = Flashcard.find_by_id(id)
+  erb:'/flashcards/correct'
 end
 
 # route to respond with WRONG
-get '/wrong' do
-  'wrong'
+get '/flashcards/:id/wrong' do |id|
+  @flashcard = Flashcard.find_by_id(id)
+  erb:'/flashcards/wrong'
 end
 
 
@@ -39,7 +41,7 @@ end
 #_______________________________________________________________________
 #CREATE
 
-post '/flashcards/new' do
+post 'xxxxxx' do
   @flashcard = Flashcard.create(params)
   redirect '/'
 end
