@@ -1,14 +1,18 @@
-<div>
-  <h1>Wrong. Sadface.</h1>
-</div>
+<br><br><br><br><br>
+<div class="col-md-3 col-md-offset-4">
+  <div class="account-box">
+  <center><h1 style="color:red">Wrong.</h1><br><img class="img-responsive" src="/images/middle_finger.gif"></center>
+    <hr>
+    <div>
+        <form action='/flashcards/<%=@flashcard.id%>' method='get'>
+          <input class="btn btn-sm btn-info pull-left button" type='submit' name='retry' value='Try Again' >
+        </form>
 
-<div>
-  <form action='/flashcards/<%=@flashcard.id%>' method='get'>
-    <input type='submit' name='retry' value='Try Again' >
-  </form>
-</div>
-<div>
-  <form action='/' method='get'>
-    <input type='submit' name='continue' value='Next Card!' >
-  </form>
+
+        <form action='/flashcards/index' method='get'>
+          <input class="btn btn-sm btn-success pull-left" type='submit' name='continue' value='Next Card!' >
+        </form>
+    </div>
+    <br><br>
+  </div>
 </div>

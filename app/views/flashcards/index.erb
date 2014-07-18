@@ -1,23 +1,30 @@
-<div>
-  <%= @flashcard.question %>
-</div>
+<br><br><br><br><br>
 
-<div>
-  <form action='/flashcards/<%=@flashcard.id%>' method='post'>
-    <input name="answer" placeholder='Type answer'>
-    <input type='submit'>
-    <!-- <input type='params[:id]'> -->
-  </form>
-</div>
-<p>---------------</p>
-<div>
+<div class="col-md-3 col-md-offset-4">
+  <div class="account-box">
+
+      <h3 class="pull-left">Question # <%= @flashcard.id %></h3>
+      <p class="question pull-left"><%= @flashcard.question %></p>
+
+
+      <form action='/flashcards/<%=@flashcard.id%>' method='post'>
+        <input class="form-control" name="answer" placeholder='Type answer'><br>
+        <input class="btn btn-md btn-success" type='submit'>
+        <!-- <input type='params[:id]'> -->
+      </form>
+  </div>
+
+  <div>
+
   <form action='/flashcards/<%=@flashcard.id%>' method='post'>
     <input type='hidden' name='_method' value='delete'>
-    <button type='submit'>Delete</button>
+    <input class="btn btn-sm btn-danger pull-right" type='submit' value="Delete"></input>
   </form>
+
   <form action='/flashcards/<%=@flashcard.id%>' method='post'>
     <input type='hidden' name='_method' value='put'>
-    <button type='submit'>Edit</button>
+    <input class="button btn btn-sm btn-info pull-right" type='submit' value ='Edit'></input>
   </form>
-</div>
 
+</div>
+</div>
