@@ -1,8 +1,13 @@
 <div>
-  <h1>You are at the edit page for card number <%=@flashcard.id%>!</h1>
+  <h1>Edit card number <%=@flashcard.id%>!</h1>
 </div>
 
 <div>
+  <form action='/flashcards/confirm_edit/<%=@flashcard.id%>' method='post'>
+    <p><input style="width: 500px" name="question" value='<%=@flashcard.question%>'></p>
+    <p><input name="answer" value='<%=@flashcard.answer%>'></p>
 
+    <input type='submit' name='edit' value='SAVE'>
+    <input type='submit' name='edit' value='CANCEL'>
+  </form>
 </div>
-

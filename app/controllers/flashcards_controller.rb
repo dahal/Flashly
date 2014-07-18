@@ -61,6 +61,23 @@ get '/flashcards/confirm_edit/:id' do |id|
   erb:'/flashcards/edit'
 end
 
+# post '/flashcards/confirm_edit/:id' do |id|
+#   @flashcard = Flashcard.find_by_id(id)
+#   @flashcard.update_attributes(params)
+# end
+
+post '/flashcards/confirm_edit/:id' do |id|
+  if params[:edit] == 'CANCEL'
+    redirect("/flashcards/#{id}")
+  elsif params[:edit] == 'SAVE'
+    @flashcard = Flashcard.find_by_id(id)
+    @flashcard.question = params[:question]
+    @flashcard.answer = params[:answer]
+    @flashcard.save
+    erb:'/flashcards/edit_conf'
+  end
+end
+
 
 #_______________________________________________________________________
 #DELETE
@@ -80,7 +97,7 @@ post '/flashcards/confirm_delete/:id' do |id|
     redirect("/flashcards/#{id}")
   elsif params[:delete] == 'DELETE IT ALREADY'
     @flashcard = Flashcard.find_by_id(id)
-    Flashcard.destroy(id)
+    Flashcard.delete(id)
     erb:'/flashcards/delete_conf'
   end
 end
