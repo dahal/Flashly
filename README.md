@@ -1,2 +1,2 @@
 ##Flashy
-![/public/Flashly.png](Flashly)
+![Flashly](https://raw.githubusercontent.com/dahal/Flashy/master/public/Flashly.png)
