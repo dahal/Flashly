@@ -66,7 +66,6 @@ end
 #DELETE
 
 delete '/flashcards/:id' do |id|
-  "you got to the delete route for card id number #{id}"
   @flashcard = Flashcard.find_by_id(id)
   redirect ("/flashcards/confirm_delete/#{id}")
 end
@@ -79,7 +78,9 @@ end
 post '/flashcards/confirm_delete/:id' do |id|
   if params[:delete] == 'CANCEL'
     redirect("/flashcards/#{id}")
-  elsif params[:delete] == 'OK'
-    "delete page for card number #{id} ||| value of 'delete' is: #{params[:delete]}"
+  elsif params[:delete] == 'DELETE IT ALREADY'
+    @flashcard = Flashcard.find_by_id(id)
+    Flashcard.destroy(id)
+    erb:'/flashcards/delete_conf'
   end
 end
