@@ -8,7 +8,8 @@ class Flashcard < ActiveRecord::Base
   def update
   end
 
-  def delete
+  def delete(id)
+    Flashcard.destroy(id)
   end
 
 end
