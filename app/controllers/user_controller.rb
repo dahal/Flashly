@@ -15,10 +15,10 @@ get '/login' do
 end
 
 post '/users/login' do
-	@user = User.find_by_email(params[:email])
+	@user = User.where(email: params[:email]).first
+	# @user = User.find_by_email(params[:email])
 	if @user && @user.password == params[:password]
 		session[:id] = @user.id
-		p session[:id]
 		redirect '/'
 	else
 		redirect '/signup'
