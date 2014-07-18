@@ -1,0 +1,11 @@
+<div>
+  <!-- <h1>Are you sure you want to delete card number <%=@card%>?!</h1> -->
+  <h1>Are you sure you want to DELETE card number <%=@flashcard.id%>?!</h1>
+</div>
+
+<div>
+  <form action='/flashcards/confirm_delete/<%=@flashcard.id%>' method='post'>
+    <input type='submit' name='delete' value='OK'>
+    <input type='submit' name='delete' value='CANCEL'>
+  </form>
+</div>
