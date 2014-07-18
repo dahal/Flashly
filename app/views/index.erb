@@ -1,0 +1,17 @@
+<div class="container">
+  <center>
+    <h1 class="logo">Flashy</h1>
+  </center>
+  <hr>
+  <center>
+  <% if logged_in? %>
+      <img src="<%= @gravatar %>" class="img-responsive img-circle">
+      <h2>Hey <%= @user.name %> </h2>
+      <a class="btn btn-md btn-success"href="/flashcards/index">Play</a>
+      <a class="btn btn-md btn-danger" href="/logout">Logout</a>
+  <% else %>
+      <a class="btn btn-md btn-info" href="/login">Signin</a>
+      <a class="btn btn-md btn-primary" href="/signup">Signup</a>
+  <% end %>
+  </center>
+</div>

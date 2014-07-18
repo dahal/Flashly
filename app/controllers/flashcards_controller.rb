@@ -1,10 +1,13 @@
+
+
+
 # CRUD
 
 #READ
 #landing page, pick card at random and redirect to
 #that card's URL
 
-get '/' do
+get '/flashcards/index' do
   @flashcard = Flashcard.all.sample
   redirect("/flashcards/#{@flashcard.id}")
 end
