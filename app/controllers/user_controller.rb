@@ -26,7 +26,8 @@ post '/users/login' do
 end
 
 get '/profile' do
-	@user = User.find_by_id(session[:id])
+	@user = User.where(id:session[:id]).first
+	#@user = User.find_by_id(session[:id])
 	@gravatar = @user.email.to_s.gravatar
 	erb:'/users/profile'
 end
