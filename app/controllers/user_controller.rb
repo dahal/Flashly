@@ -16,6 +16,7 @@ end
 post '/users/login' do
 	@user = User.find_by_email(params[:email])
 	if @user.password == params[:password]
+		session[:id]
 		"Logged in"
 	else
 		#redirect '/signup'
