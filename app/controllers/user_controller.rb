@@ -19,7 +19,7 @@ post '/users/login' do
 	if @user && @user.password == params[:password]
 		session[:id] = @user.id
 		p session[:id]
-		redirect '/profile'
+		redirect '/'
 	else
 		redirect '/signup'
 	end
