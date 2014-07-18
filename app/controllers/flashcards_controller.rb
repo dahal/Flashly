@@ -1,9 +1,9 @@
 # CRUD
 
-#index
-#read
+#READ
 #landing page, pick card at random and redirect to
 #that card's URL
+
 get '/' do
   @flashcard = Flashcard.all.sample
   redirect("/flashcards/#{@flashcard.id}")
@@ -15,15 +15,13 @@ get '/flashcards/:id' do
   erb:'/flashcards/index'
 end
 
-#accept user answer and card id
+# accept user answer and card id
 post '/flashcards/:id' do
   if Flashcard.evaluate(params[:id], params[:answer])
     redirect '/right'
   else
     redirect '/wrong'
   end
-# call model logic pass in the card id and the user answer
-# conditial redirect to right or wrong
 end
 
 # route to respond with RIGHT
@@ -38,29 +36,48 @@ end
 
 
 
-
-#create
-#new
-get '/flashcards/new' do
-  erb:'/flashcards/new'
-end
+#_______________________________________________________________________
+#CREATE
 
 post '/flashcards/new' do
   @flashcard = Flashcard.create(params)
   redirect '/'
 end
 
-#update
-#edit
+
+
+#_______________________________________________________________________
+#UPDATE
+
 put '/flashcards/:id' do |id|
-  "you got to the edit route for card id number #{id}"
-  #code to delete the card with the passed in id (from url)
+  @flashcard = Flashcard.find_by_id(id)
+  redirect ("/flashcards/confirm_edit/#{id}")
 end
 
-#delete
-#destroy
+get '/flashcards/confirm_edit/:id' do |id|
+  @flashcard = Flashcard.find_by_id(id)
+  erb:'/flashcards/edit'
+end
+
+
+#_______________________________________________________________________
+#DELETE
 
 delete '/flashcards/:id' do |id|
   "you got to the delete route for card id number #{id}"
-  #code to delete the card with the passed in id (from url)
+  @flashcard = Flashcard.find_by_id(id)
+  redirect ("/flashcards/confirm_delete/#{id}")
+end
+
+get '/flashcards/confirm_delete/:id' do |id|
+  @flashcard = Flashcard.find_by_id(id)
+  erb:'/flashcards/delete'
+end
+
+post '/flashcards/confirm_delete/:id' do |id|
+  if params[:delete] == 'CANCEL'
+    redirect("/flashcards/#{id}")
+  elsif params[:delete] == 'OK'
+    "delete page for card number #{id} ||| value of 'delete' is: #{params[:delete]}"
+  end
 end
