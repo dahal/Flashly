@@ -1,3 +1,6 @@
+after do
+  ActiveRecord::Base.connection.close
+end
 #POST Signup
 get '/signup' do
 	erb:'/users/signup'

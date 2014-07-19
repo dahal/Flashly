@@ -1,7 +1,6 @@
-
-
-
-# CRUD
+after do
+  ActiveRecord::Base.connection.close
+end
 
 #READ
 #landing page, pick card at random and redirect to
